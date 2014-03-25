@@ -1,0 +1,42 @@
+<template name="contacts">
+  {{#if currentUser}}
+    <div class="page-header">
+      <h1>Contacts</h1>
+      <table class="table table-bordered"> 
+      {{#each items}}
+        <tr>
+          <td class="field-label col-md-3">
+            <label>
+                {{name}}
+            </label>
+          </td>
+          <td class="field-label col-md-3">
+            <label>
+                {{phone}}
+            </label>
+          </td>
+          <td class="field-label col-md-3">
+            <label>
+                {{email}}
+            </label>
+          </td>
+          <td class="col-md-1">
+              <button type="button" class="btn btn-sm btn-danger delete-contact">Delete Contact</button>
+          </td>
+        </tr>
+      {{/each}}
+      </table>
+    </div>
+  {{else}}
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <div class="well">
+                    <h4>Sign in to view or create contacts.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+  {{/if}}
+
+</template>

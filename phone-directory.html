@@ -1,0 +1,48 @@
+<head>
+  <meta charset="utf-8">
+  <title>phone-directory</title>
+  </head>
+<body>
+  {{> navigation}}
+  {{> layout }}
+</body>
+
+<template name="navigation">
+  <div class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ pathFor 'home' }}">Home</a></li>
+        {{#if currentUser}}
+          <li><a href="{{ pathFor 'addContact' }}">Add Contact</a></li>
+        {{/if}}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{> adminLink }}
+        {{ loginButtons }}
+      </ul>
+    </div>
+  </div>
+</template>
+
+<template name="layout">
+  <div class="container">
+    {{yield}}
+  </div>
+</template>
+
+<template name="admin">
+  {{#if isAdminUser}}
+    {{> accountsAdmin}}
+  {{else}}
+    Must be admin to see this...
+  {{/if}}
+</template>
+
+<template name="adminLink">
+  {{#if isAdminUser}}
+    <li><a href="{{ pathFor 'admin' }}">Accounts Admin</a></li>
+  {{/if}}
+</template>
